@@ -1,3 +1,4 @@
+@props(['title' => 'Trang web laptop', 'categories' => []])
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -106,6 +107,19 @@
             display:grid;
             grid-template-columns:repeat(2,30% 70%);
         }
+        .btn-sort {
+            padding: 5px 12px;
+            margin: 0 5px;
+            border: 1px solid #ccc;
+            background: #f8f9fa;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .btn-sort:hover {
+            background: #e2e6ea;
+        }
     </style>
 </head>
 <body>
@@ -124,7 +138,7 @@
                         </ul>
                     </div>
                     <div class="search-bar">
-                        <form method="post" action="{{url('/timkiem')}}">
+                        <form method="get" action="{{url('/timkiem')}}">
                             {{ csrf_field() }}
                             <input type="text" name="keyword" placeholder="Tìm kiếm laptop...">
                             <button class="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
@@ -151,7 +165,7 @@
                                 {{ Auth::user()->name }}
                                 </button>
                                 <div class="dropdown-menu">
-                                <a class="dropdown-item" href="">Quản lý</a>
+                                <a class="dropdown-item" href="{{ route('laptoplist') }}">Quản lý</a>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <a class="dropdown-item" onclick="event.preventDefault();
