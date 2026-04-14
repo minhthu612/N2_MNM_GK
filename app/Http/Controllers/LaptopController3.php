@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class LaptopController2 extends Controller
+class LaptopController3 extends Controller
 {
 
     public function index(){

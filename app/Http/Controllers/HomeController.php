@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -75,20 +76,23 @@ class HomeController extends Controller
 }
     public function add(Request $request)
 {
+    // ❌ CHƯA LOGIN → KHÔNG CHO THÊM
+    if (!Auth::check()) {
+        return redirect()->route('login')
+            ->with('error', 'Bạn phải đăng nhập để thêm vào giỏ hàng');
+    }
+
     $id = $request->id;
     $qty = $request->so_luong;
 
-    // lấy sản phẩm
     $product = DB::table('san_pham')->where('id', $id)->first();
 
     if (!$product) {
         return redirect()->back();
     }
 
-    // lấy giỏ hàng hiện tại
     $cart = session()->get('cart', []);
 
-    // nếu đã có → cộng thêm
     if (isset($cart[$id])) {
         $cart[$id]['so_luong'] += $qty;
     } else {
