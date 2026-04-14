@@ -1,4 +1,3 @@
-@props(['title' => 'Trang web laptop', 'categories' => []])
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -155,7 +154,7 @@
                                 <a class="dropdown-item" href="">Quản lý</a>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                <a class="dropdown-item" onclick="event.preventDefault();
+                                    <a class="dropdown-item" onclick="event.preventDefault();
                                                         this.closest('form').submit();">Đăng xuất</a>
                                 </form>
                                 </div>
