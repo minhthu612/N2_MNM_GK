@@ -83,3 +83,4 @@ class LaptopController2 extends Controller
         return redirect()->route('cart')->with('success', 'Đặt hàng thành công!');
     }
 }
+
