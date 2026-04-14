@@ -12,3 +12,6 @@ Route::get('/dashboard', function () {
 
 
 require __DIR__.'/auth.php';
+Route::get('/laptop/theloai/{id}', [HomeController::class, 'theoDanhMuc']);
+Route::get('/laptop/{id}', [HomeController::class, 'chiTiet']);
+Route::post('/cart/add', [HomeController::class, 'add'])->name('cart.add');
